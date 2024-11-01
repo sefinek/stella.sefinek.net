@@ -4,11 +4,11 @@
   "description": "A website that allows you to shorten the URL for a specific page on sefinek.net.",
   "homepage": "https://stella.sefinek.net",
   "bugs": {
-    "url": "https://github.com/sefinek24/stella.sefinek.net/issues"
+    "url": "https://github.com/sefinek/stella.sefinek.net/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sefinek24/stella.sefinek.net.git"
+    "url": "git+https://github.com/sefinek/stella.sefinek.net.git"
   },
   "license": "MIT",
   "author": "Sefinek <contact@sefinek.net> (https://sefinek.net)",
