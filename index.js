@@ -3,7 +3,7 @@ require('dotenv').config();
 const http = require('node:http');
 const { parse } = require('node:url');
 const helmet = require('helmet');
-const morganMiddleware = require('./middlewares/morgan.js');
+const morgan = require('./middlewares/morgan.js');
 const BASE_URL = 'https://sefinek.net/genshin-stella-mod';
 
 const renderHtml = (res, msg, status, err = null) => {
@@ -15,7 +15,7 @@ const renderHtml = (res, msg, status, err = null) => {
 const applyMiddlewares = (req, res) =>
 	Promise.all([
 		new Promise((resolve, reject) => helmet()(req, res, err => (err ? reject(err) : resolve()))),
-		new Promise((resolve, reject) => morganMiddleware(req, res, err => (err ? reject(err) : resolve())))
+		new Promise((resolve, reject) => morgan(req, res, err => (err ? reject(err) : resolve()))),
 	]);
 
 const server = http.createServer(async (req, res) => {
