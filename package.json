@@ -1,6 +1,6 @@
 {
   "name": "stella.sefinek.net",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A website that allows you to shorten the URL for a specific page on sefinek.net.",
   "homepage": "https://stella.sefinek.net",
   "bugs": {
@@ -18,12 +18,12 @@
     "up": "ncu -u && npm install && npm update && npm audit fix"
   },
   "dependencies": {
-    "dotenv": "^16.4.5",
+    "dotenv": "^16.4.7",
     "helmet": "^8.0.0",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.13.0",
-    "globals": "^15.11.0"
+    "@eslint/js": "^9.16.0",
+    "globals": "^15.13.0"
   }
 }
