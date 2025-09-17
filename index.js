@@ -1,9 +1,10 @@
 process.loadEnvFile();
 
 const http = require('node:http');
-const { parse } = require('node:url');
+const { URL } = require('node:url');
 const helmet = require('helmet');
 const morgan = require('./middleware/morgan.js');
+
 const BASE_URL = 'https://sefinek.net/genshin-stella-mod';
 
 const renderHtml = (res, msg, status, err = null) => {
@@ -23,7 +24,14 @@ const server = http.createServer(async (req, res) => {
 		await applyMiddlewares(req, res);
 
 		if (req.method === 'GET') {
-			res.writeHead(301, { Location: `${BASE_URL}${parse(req.url).pathname.replace(/\/$/, '')}` });
+			const incoming = new URL(req.url, 'https://sefinek.net');
+			const cleanPath = incoming.pathname === '/' ? '' : incoming.pathname.replace(/\/$/, '');
+
+			const target = new URL(BASE_URL);
+			target.pathname = `${target.pathname.replace(/\/$/, '')}${cleanPath}`;
+			target.search = incoming.search || '';
+
+			res.writeHead(301, { Location: target.toString() });
 			return res.end();
 		}
 
