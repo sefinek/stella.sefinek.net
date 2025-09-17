@@ -3,7 +3,7 @@ process.loadEnvFile();
 const http = require('node:http');
 const { parse } = require('node:url');
 const helmet = require('helmet');
-const morgan = require('./middlewares/morgan.js');
+const morgan = require('./middleware/morgan.js');
 const BASE_URL = 'https://sefinek.net/genshin-stella-mod';
 
 const renderHtml = (res, msg, status, err = null) => {
