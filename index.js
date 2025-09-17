@@ -31,7 +31,7 @@ const server = http.createServer(async (req, res) => {
 			target.pathname = `${target.pathname.replace(/\/$/, '')}${cleanPath}`;
 			target.search = incoming.search || '';
 
-			res.writeHead(301, { Location: target.toString() });
+			res.writeHead(301, { Location: target.toString(), 'Referrer-Policy': 'origin' });
 			return res.end();
 		}
 
