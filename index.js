@@ -41,10 +41,5 @@ const server = http.createServer(async (req, res) => {
 	}
 });
 
-server.listen(process.env.PORT, () => {
-	if (process.env.NODE_ENV === 'production') {
-		process?.send('ready');
-	} else {
-		console.log(`Server running at http://127.0.0.1:${process.env.PORT}`);
-	}
-});
+const { PORT } = process.env;
+server.listen(PORT, () => process.send ? process.send('ready') : console.log(`Server running at http://127.0.0.1:${PORT}`));
