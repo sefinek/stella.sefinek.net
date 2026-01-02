@@ -43,11 +43,7 @@ const server = http.createServer(async (req, res) => {
 
 server.listen(process.env.PORT, () => {
 	if (process.env.NODE_ENV === 'production') {
-		try {
-			process.send('ready');
-		} catch (err) {
-			console.error('Failed to send ready signal to parent process.', err.message);
-		}
+		process?.send('ready');
 	} else {
 		console.log(`Server running at http://127.0.0.1:${process.env.PORT}`);
 	}
